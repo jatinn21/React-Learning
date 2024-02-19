@@ -7,13 +7,15 @@ function App() {
   function incrementCounter() {
     if (counter >= 20) return;
     ++counter;
-    setCounter(counter);
+    console.log(counter); // no effect on UI
+    setCounter(counter); // will effect the UI
   }
 
   function decrementCounter() {
     if (counter <= 0) return;
     --counter;
-    setCounter(counter);
+    console.log(counter); // no effect on UI
+    setCounter(counter); // will effect the UI
   }
 
   return (
