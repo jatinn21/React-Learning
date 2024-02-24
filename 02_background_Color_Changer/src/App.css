@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100vh;
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.bgColor {
+  display: flex;
+  gap: 2rem;
+  background-color: white !important;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+}
+
+.bgColor p {
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  font-size: 2rem;
+  cursor: pointer;
+  font-weight: 900;
+  color: white;
+  transition: all 0.5s ease;
+  text-transform: capitalize;
+}
+
+.bgColor p:hover {
+  transform: scale(1.2);
+}
+
+p.randomGenerator {
+  padding: 1rem 2rem;
+  text-transform: capitalize;
+  border-radius: 3rem;
+  font-size: 2rem;
+  font-weight: 900;
+  width: max-content;
+  background-color: rgb(255, 255, 255) !important;
+  position: absolute;
+  bottom: 5%;
+  right: 10%;
+  color: black;
+  transition: all 0.3s ease;
+}
+
+p.randomGenerator:hover {
+  transform: scale(1.2);
+}
