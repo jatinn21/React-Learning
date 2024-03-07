@@ -96,6 +96,20 @@ function Header() {
                 >
                   Contact
                 </NavLink>
+
+                <NavLink
+                  to="/github"
+                  className={({ isActive }) =>
+                    `${
+                      isActive
+                        ? "bg-blue-900 px-5 rounded-3xl"
+                        : "bg-transparent-900 rounded-xl"
+                    }  text-white rounded-md px-3 py-2 text-sm font-medium`
+                  }
+                  aria-current="page"
+                >
+                  Github
+                </NavLink>
               </div>
             </div>
           </div>
