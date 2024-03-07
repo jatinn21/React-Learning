@@ -30,7 +30,7 @@ const router = createBrowserRouter(
 
         // Way 2
         loader={githubInfoLoader}
-        path="/github"
+        path="github"
         element={<Github />}
       />
     </Route>
