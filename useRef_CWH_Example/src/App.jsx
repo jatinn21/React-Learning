@@ -9,7 +9,7 @@ function App() {
 
   function clickedFun() {
     // setCount(count + 1);  // uncommit this line to make the rerendered after every click
-    console.log("rerendered, Value Fetched : " + a.current++);
+    console.log("rerendered, Value Fetched : " + a.current++); // this will work : )
   }
 
   useEffect(() => {
