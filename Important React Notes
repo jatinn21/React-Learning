@@ -1,0 +1,862 @@
+All Important Topics to cover :  
+
+Component Structure 
+
+(functional components and class component) 
+
+ 
+
+JSX and Rendering 
+
+(Syntax extension for JavaScript recommended for describing UI components) 
+
+ 
+
+Props 
+
+(Understand how to pass data from parent components to child components) 
+
+(Explore the use of default props and prop types for validation) 
+
+ 
+
+States 
+
+(Learn how to manage component-specific data using state and Explore useState Hook) 
+
+ 
+
+STATE VS PROPS 
+
+State holds the data and can change over time 
+
+Props are immutable, once set can't be changed. So they are readonly. 
+
+State is used to store the data belonging to a component 
+
+Props is used to pass the data and event handlers to its children components 
+
+State can only be used in class components 
+
+ 
+
+Props can be used in both functional and class components  
+
+ 
+
+State is generally updated by event handlers 
+
+Props are updated by the parent component for the children component 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Lifecycle Methods For Class Components 
+
+(Familiarize yourself with methods like componentDidMount, componentDidUpdate, and componentWillUnmount) 
+
+& for Functional components, understand the useEffect hook. 
+
+ 
+
+ 
+
+ 
+
+The series of events that happens from the mounting of a React component to its Unmounting. 
+
+Mounting – Birth of your component (component existence mae aaya aapke application m) 
+
+Update – Growth of your component (component kuch kar raha hai, update ho raha hai) 
+
+Unmount – Death of your component (component hai he nhi picture mai, may happens when you click on some link and redirect some other place at that time our component is unmounted.   ) 
+
+ 
+
+Note : the render() method is used to render HTML of the component in react.  
+
+This method Is required for a class based component to render the DOM.  
+
+This method runs during the mounting and the updating of your component.  
+
+You can't modify the state inside it 
+
+ 
+
+componentDidMount() : React will call it when your component is added (mounted) to the screen. Once the render() method is executed then only componentDidMount() is been executed. 
+
+Common place to start data fetching 
+
+If you implement componentDidMount(), you usually need to implement other lifecycle methods to avoid bugs. For instance, if componentDidMount reads some state or props, you also have to implement componentDidUpdate() to handle their changes, and componentWillUnmount to clean up whatever componentDidMount was doing. 
+
+Does not take any parameters. 
+
+Does not return anything. 
+
+In Strict Mode, in development React will call componentDidMount, then immediately call componentDidUnmount, and then call componentDidMount again  
+
+For many use cases, defining componentDidMount, componentDidUpdate, and componentWillUnmount together in class components is equivalent to calling useEffect in function components. 
+
+ 
+
+ComponentDidUpdate() : if you define the componentDidUpdate method, React will call it immediately after the component has been re-rendered with updated props or state. This method is not called for initial render. 
+
+You can use it to manipulate DOM after an update. 
+
+It takes 3 parameters : prevProps, prevState, and snapshot. 
+
+PrevProps : Props before the update. Compare prevProps to this.props to determine what changed. 
+
+PrevState : State before the update. Compare prevState to this.state to determine what changed. 
+
+SnapShot : If you implemented getSnapshotBeforeUpdate, snapshot will contain the value you returned from that method. Otherwise it will return undefined. 
+
+ 
+
+ComponentDidUnmount() : if you define the ComponentDidUnmount, React will call it before the component is removed (unmount) from the screen. 
+
+This is the common place to cancel data fetching. 
+
+If the componentDidMount() sets up a subscription, componentDidUnmount() should clean up the subscription. 
+
+Does not take any parameters. 
+
+Should not return anything. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Event Handling 
+
+(Learn how to handle user interactions and events in React. 
+
+Understand the concept of synthetic events) 
+
+ 
+
+Conditional Rendering and Lists 
+
+(Master techniques for rendering components conditionally based on state or props) 
+
+ 
+
+Forms 
+
+(Explore how to create controlled components for form handling) 
+
+(Understand the use of controlled inputs and form submission) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Hooks 
+
+(Learn Some most important and commonly used hooks like :  
+
+UseState : Allow functional components to manage state.  
+
+Example :  
+
+const [count, setCount] = useState(0); 
+
+ 
+
+UseEffect : performs side effects in functional components. 
+
+Equivalent to lifecycle methods in class components (componentDidMount, componentdidUpdate, componentwillUnmount) 
+
+Example :  
+
+useEffect(() => { 
+
+  // Side effect code here 
+
+  return () => { 
+
+    // Cleanup code (componentWillUnmount) 
+
+  }; 
+
+}, [dependencies]); 
+ 
+
+UseContext : Allow functional components to consume values from Context API.  
+
+Example : 
+
+const contextValue = useContext(myContext); 
+
+Learn yourself : ( 
+
+ 
+
+UseReducer : Manages more complex state logic by using a reducer function. 
+
+Example :  
+
+Const [state, dispatch] = useReducer(reducer, initialState); 
+
+ 
+
+UseCallback : memorize a callback function to prevent unnecessary re-renders of components. 
+
+Example :  
+
+Const memoizedCallback = useCallback( ()=>{ 
+
+// callback code here 
+
+}, [dependencies] ); 
+
+ 
+
+UseMemo : memorizes a value to prevent unnecessary computations during re-renders. 
+
+Const memoizedValue = useMemo( ()=> calculationFunction , [listOfDependencies] ); 
+
+ 
+
+CalculationFunction will take no arguments, like ()=>,  and returns what you wanted to calculate. 
+
+list of dependencies  will includes every value within your component that's used inside your calculation. 
+
+ 
+
+On initial render, you will get the value from useMemo will be resulting of calling your calculation Function. On every subsequent render, React will compare the dependencies with the dependencies you passed during the last render. If none of the dependencies  have changed, useMemo will return the value that was already calculated before. Otherwise react will re-run your calculation and return the new value. 
+
+ 
+
+UseRef : It's like memory cell that can hold a value and doesn't cause the component to   re-render when it changes. 
+
+Key Points :  
+
+Changing the value of useRef doesn't trigger a re-render. 
+
+You can modify the current property of a 'useRef' object directly. 
+
+The component won't re-render when the current property changes. 
+
+Common use case is accessing and interacting with DOM elements directly, like accessing the value of an input field. 
+
+Const inputRef = useRef(<Initial Value>); 
+
+Const  handleButtonClick  = () => { 
+
+Alert('Input Value: ${inputRef.current.value} '); 
+
+}; 
+
+Return ( 
+
+<div> 
+
+<input type="text" ref={ inputRef }  /> 
+
+<button onClick={   handleButtonClick  } > Get Input Value </button> 
+
+</div> 
+
+); 
+
+ 
+
+ 
+
+For Better Understanding : https://youtu.be/Lt4vy8hfc-s?si=XJ-9wRhMi1-0daIV 
+
+ 
+
+'useRef' can be used to preserve values between renders without causing re-renders. 
+
+Const countRef = useRef(0); 
+
+Const increment = () => { 
+
+CountRef.current += 1; 
+
+Console.log('Current count : ${countRef.current} '); 
+
+}; 
+
+ 
+
+Initial Value is optional. You can skip that and it will consider 'undefined' there. 
+
+UseRef() returns an object :  {current : <initial Value>} , That's why we use variableRef.current to access the value. 
+
+ 
+
+ 
+
+UseEffect for Data Fetching Too : a common pattern for fetching data in functional components. 
+
+Example : useEffect( ()=> { 
+
+Const fetchData = async ()=>{ 
+
+Const result = await fetchDataFromAPI(); 
+
+SetData(result); 
+
+}; 
+
+FetchData(); 
+
+},   [dependencies] ); 
+
+ 
+
+UseHistory : this hook is of react-router library.  Helps you to access the history object and navigate between routes. 
+
+Example : const history = useHistory(); 
+
+history.push('/new-path'); 
+
+ 
+
+UseLocation :  this hook is also of react-router library. Helps you to access the current location. 
+
+Example : const  location  = useLocation(); 
+
+Console.log( location .pathname) 
+
+ 
+
+UseParams :  This hook is also provided by react router to access the parameters from the URL. 
+
+Example : const { id }  = useParams(); 
+
+ 
+
+ 
+
+Context API  
+
+(Allows you to share values, like theme or authentication status, across components without explicitly passing props) 
+
+(It consist of  Provider   and   Consumer ) 
+
+ 
+
+createContext(defaultValue)  
+
+ 
+
+Example :  
+
+import { createContext } from 'react'; 
+
+ 
+
+Const themeContext = createContext('light'); 
+
+ 
+
+Learn By Yourself : (  
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Routing 
+
+(Routing in a web application is like navigating through different pages or views.) 
+
+(Imagine a website having multiple pages/sections like homepage, contact and about page.  
+
+Routing allows users to move between these pages/sections seamlessly. ) 
+
+ 
+
+Imagine :  
+
+Your Website as Book,  
+
+React-router as Navigation Guide,  
+
+URL as Bookmarks, which page/section of the book you want to open 
+
+Components as Pages 
+
+ 
+
+We have  BrowserRouter  and  route  to manage navigation. 
+
+Example :  
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
+
+ 
+
+<Router> 
+
+ <Switch>  
+
+<Route path="/" exact component={Homepage} /> 
+
+ <Route path="/about" component={AboutPage} />  
+
+<Route path="/contact" component={ContactPage} />  
+
+</Switch> 
+
+ </Router> 
+
+ 
+
+ 
+
+Linking Between Pages 
+
+ import { Link } from 'react-router-dom'; 
+
+Return ( 
+
+<nav> 
+
+<ul> 
+
+<li>    < Link  to="/">  HOME </ Link >   </li> 
+
+<li>   < Link  to="/about">  ABOUT </ Link >   </li> 
+
+<li>    < Link  to="/contact">  CONTACT </ Link >   </li> 
+
+</ul> 
+
+</nav> 
+
+); 
+
+ 
+
+Difference between anchor tag and Link Tag? 
+
+Ans.  
+
+Anchor tag make the page reload and we know the page reload concept is not there in react so we achieved that by using Link tag. It repaints the virtual DOM 
+
+ 
+
+Inside Anchor, we us "href" attribute whereas in Link , we use "to" attribute 
+
+ 
+
+Rendering Components Based on Routes: 
+
+Return ( 
+
+<Router> 
+
+<Switch> 
+
+< Route  path="/"   exact    component = {HomePageComponent}  />   
+
+< Route  path="/about"    component = {AboutPageComponent}  />   
+
+< Route  path="/contact" component = {ContactPageComponent}  />   
+
+</Switch> 
+
+</Router> 
+
+); 
+
+ 
+
+For Showing 404PageNotFound : 
+
+Return ( 
+
+<Router> 
+
+<Switch> 
+
+< Route  path="/" exact    component = {HomePageComponent}  />   
+
+< Route  path="/about"    component = {AboutPageComponent}  />   
+
+< Route  path="/contact" component = {ContactPageComponent}  />   
+
+< Route  path="*" component = {404ErrorPageComponent}  />   
+
+</Switch> 
+
+</Router> 
+
+); 
+
+ 
+
+ Exact   : This keyword ensures that a <Route> is rendered only when the path matches the entire URL, preventing rendering of a components for partial matches. Helps when you want to distinguish between the root route and its child routes. 
+
+So '/'  should direct to home or root page of the website. And '/about' should navigate to About page. But without exact, if we try to access the '/about' page we will render Home Page and About page because it there is some partially matches from both the routes i.e.  '/'   
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Redux 
+
+Learn by yourself : ( 
+
+ 
+
+Middleware in Redux  
+
+ (Understand how to handle asynchronous actions in Redux using middleware) 
+
+ 
+
+API calls 
+
+(Learn how to make API calls using libraries like Axios or the Fetch API) 
+
+ 
+
+Error Handling 
+
+ 
+
+Styling 
+
+ 
+
+Testing 
+
+ 
+
+Build Tools and Bundlers 
+
+(Understand the basics of Webpack, Babel, and other build tools) 
+
+ 
+
+Performance Optimization 
+
+ 
+
+Server-Side Rendering (SSR) and Client-Side Rendering (CSR) 
+
+(What's the difference and use cases of them) 
+
+ 
+
+Security Best Practices 
+
+ 
+
+ 
+
+LATEST React Router library :  
+
+ 
+
+Install this "react-router-dom" 
+
+ 
+
+There are few things to notice, we got access to Link & NavLink. 
+
+Link : Same as anchor tag but here it does not refresh the page. So what we want in our react. 
+
+NavLink :  When we want to change somethings like if I click on Home button from navbar, it should bring home component and makes the button text highlighted. 
+
+We have access to a special object which has a property called as "isActive". Checks whether the current component is showing or not. If yes then the isActive will be true. 
+
+Now using it we can use it in a className. How? 
+
+<li> 
+
+<NavLink className = ( {isActive}  )=>{ return `  bg-red-800   ${  isActive ? Text-orange-900 : text-grey-900 }  border-solid-red-xl `  } > 
+
+Home 
+
+< /NavLink > 
+
+</li> 
+
+Outlet :  when you want to change only few things then use Outlet in the Layout Component (How the things should be displayed at root part). 
+
+RouterProvider :  use it inside <strictMode></strictMode>. Takes a prop called router.  
+
+<React.StrictMode> 
+
+    <RouterProvider router={router} /> 
+
+  </React.StrictMode> 
+
+ 
+
+Router :  create a router then, but how ? 
+
+CreateBrowserRouter :   
+
+const router = createBrowserRouter( 
+
+  createRoutesFromElements( 
+
+    <Route path="/" exact element={<Home />}> 
+
+      <Route path="" element={<Hero />} /> 
+
+      <Route path="/about" element={<About />} /> 
+
+      <Route path="/contact" element={<Contact />} /> 
+
+      <Route path="*" element={<Error404Page />} /> 
+
+    </Route> 
+
+  ) 
+
+); 
+
+ 
+
+ 
+
+UseParam : <Route path="user/:userid" element={<Error404Page />} /> 
+
+Now inside User Component, import useParam from react-router-dom, and now it will give you the parameter value, no mattere what's the type of data you are giving, we can get it in User Component. 
+
+But remember the name I.e. userid , if it was userName then you have to pass the same name in User Component. 
+
+Plus Don't forgot to put colon after slash          :userid    
+
+In User Component  :  
+
+ Import { useParams } from 'react-router-dom'; 
+
+ 
+
+Export default Function User(){ 
+
+Const { userid }= useParams(); 
+
+Return <h1> {userid} </h1>; 
+
+} 
+
+ 
+
+URL : localhost:5143/user/jatin   : userid = jatin 
+
+URL : localhost:5143/user/100     : userid = 100 
+
+ 
+
+ 
+
+ 
+
+UseEffect is called at the moment when there is any change in the dependencies or the page is mounted at the first time. 
+
+Which means we can use it for fetching data from API, like Github API for fetching details like github followers and the profile picture. 
+
+Inside github Component  
+
+Import {useState,useEffect} from ''react"; 
+
+ 
+
+Const [data,setData] = useState(null) 
+
+UseEffect( 
+
+Function(){ 
+
+fetch('https://api.github.com/users/jatinn21') 
+
+.then((res)=>res.json()) 
+
+.then(data=> console.log(data))                                               // isse kam toh nhi hoga, because hume toh kahi store karna padega na 
+
+.then(data=> setData(data))                                                
+
+},[] 
+
+) 
+
+Context API crash course:   
+
+ 
+
+Why we need :  
+
+ 
+
+ Context API is a feature that allows you to share state between components without having to props through every level of the component tree.  
+
+It works like an Global Object so every child component of the App can have access to it without taking some data in the form of props from their parent components which might also take the value as a prop from their parent/grandparent. 
+
+That would be very unoptimized way because they are also carrying the data so that they can pass it further. 
+
+It Avoid Prop Drilling , As your React application grows in complexity, you may find yourself passing props down through several levels of nested components Just to make them available where they are needed.  
+
+This make the code hard to maintain. So context Api solve this problem by providing a way to share state at a higher level and have it accessible at lower levels without explicitly passing it through each intermediate component. 
+
+Context API is often used for managing global state, so instead of depending on any ancestor components, you can use the Context API to create a global state that is accessible to any component in your application. Use it for user authentication, theme preferences or any data that can be needed across different parts of your app. 
+
+ 
+
+ 
+
+Parent Component :  
+
+ 
+
+Import {createContext} from react; 
+
+ 
+
+Let FirstName = createContext(); 
+
+Let LastName = createContext(); 
+
+ 
+
+Return ( 
+
+<> 
+
+<FirstName.Provider value={"Jatin"}> 
+
+<LastName.Provider value={"Sharma"}> 
+
+<ChildComp /> 
+
+</LastName.Provider> 
+
+</FirstName.Provider> 
+
+</> 
+
+) 
+
+ 
+
+Export {FirstName, LastName}; 
+
+ 
+
+ 
+
+Child Component :  
+
+ 
+
+Import {Firstname, LastName} from ParentComponent; 
+
+ 
+
+Return ( 
+
+<> 
+
+<FirstName.Consumer> 
+
+{ 
+
+(<parameteName1ForFirstName>)=>{ 
+
+Return  <> 
+
+<LastName.Consumer> 
+
+{ 
+
+(<parameteName2ForLastName)=>{ 
+
+Return ( 
+
+<h1>Hello my First name is {parameteName1ForFirstName}<h1> 
+
+<h2>& My Last name is  {parameteName2ForLastName}</h2> 
+
+); 
+
+} 
+
+} 
+
+</LastName.Consumer> 
+
+</>  
+
+} 
+
+} 
+
+</FirstName.Consumer> 
+
+</> 
+
+) 
+
+ 
+
+ 
+
+ 
+
+This will create a  callback Hell like structure. Bad and hard to maintain. 
+
+  
+
+ 
+
+REDUX : is a open source JS library commonly used with react to manage the state of an application. 
+
+It manage the state of an large application in a more organized and efficient way. 
+
+Follows the principle of unidirectional dataflow, which makes it easier to understand and debug the application's state changes. 
