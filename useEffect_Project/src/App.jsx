@@ -42,6 +42,9 @@ function App() {
         //  either you can incremenet the number or you can show the alert but you can't do both the things in one go : (
         onClick={
           (() => {
+            console.log("Number1");
+            console.log("Number2");
+            console.log("Number3");
             setNum(num + 1);
           },
           () => {
