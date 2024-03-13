@@ -58,8 +58,8 @@ const Step3 = ({ onNextStep, onPreviousStep }) => {
 
 function App() {
   return (
-    <>
-      <h1>Hello</h1>
+    <div style={{ textAlign: "center" }}>
+      <h1>Hello, UnControlled Data flow Form!!</h1>
       <OnBoardingForm
         onFinish={(data) => console.log("hi from onFinish from App : ", data)}
       >
@@ -67,7 +67,7 @@ function App() {
         <Step2 />
         <Step3 />
       </OnBoardingForm>
-    </>
+    </div>
   );
 }
 
