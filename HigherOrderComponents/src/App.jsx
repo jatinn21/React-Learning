@@ -26,6 +26,10 @@ function App() {
 function Counter({ CardColor, CardTitle, important }) {
   const [count, setCount] = useState(0);
 
+  if (important) {
+    let { name, age } = important;
+  }
+
   const updateCounter = () => {
     setCount(count + 1);
   };
@@ -47,8 +51,8 @@ function Counter({ CardColor, CardTitle, important }) {
         <h1>{count}</h1>
       </p>
       <button onClick={updateCounter}>Increae Count</button>
-      <p>{important && important?.name}</p>
-      <p>{important && important?.age}</p>
+      <p>{important && name}</p>
+      <p>{important && age}</p>
     </div>
   );
 }
