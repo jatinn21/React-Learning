@@ -16,6 +16,7 @@ function OnBoardingForm({ children, onFinish }) {
       return;
     }
     setCurrentComponentIndex(prevIndex);
+    console.log("data till yet", onBoardingData);
   };
 
   // Function to be executed when next button is pressed
