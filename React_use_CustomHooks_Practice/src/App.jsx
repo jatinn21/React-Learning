@@ -24,7 +24,6 @@ function App() {
               className="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around"
             >
               {<Profile />}
-              {<Profile />}
 
               {useShowProfile({
                 username: "JAtin",

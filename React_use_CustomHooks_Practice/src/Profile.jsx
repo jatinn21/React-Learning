@@ -111,10 +111,8 @@ function Profile() {
   const findUser = () => {
     let FetchingUser = Math.trunc(Math.random() * peoples.length + 1);
     console.log(FetchingUser, " Number generated");
-    // setTimeout(() => {
     setUser(peoples[FetchingUser]);
     return user;
-    // }, 3000);
   };
 
   const { data, error, status, refetch } = useQuery("myData", findUser, {
