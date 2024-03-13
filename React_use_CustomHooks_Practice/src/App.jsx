@@ -1,5 +1,6 @@
 import React from "react";
 import Profile from "./Profile";
+import useShowProfile from "./useShowProfile";
 
 function App() {
   return (
@@ -23,6 +24,16 @@ function App() {
               className="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around"
             >
               {<Profile />}
+              {<Profile />}
+
+              {useShowProfile({
+                username: "JAtin",
+                jobRole: "CEO",
+                description: "Hero Of the Organization",
+                twitter: "www.twitter.com",
+                github: "www.github.com",
+                instagram: "www.instagram.com",
+              })}
             </div>
           </div>
         </div>

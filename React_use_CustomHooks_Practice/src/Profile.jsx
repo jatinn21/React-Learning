@@ -111,22 +111,24 @@ function Profile() {
   const findUser = () => {
     let FetchingUser = Math.trunc(Math.random() * peoples.length + 1);
     console.log(FetchingUser, " Number generated");
+    // setTimeout(() => {
     setUser(peoples[FetchingUser]);
-    return null;
+    return user;
+    // }, 3000);
   };
 
-  const { data, error, status } = useQuery("myData", findUser, {
+  const { data, error, status, refetch } = useQuery("myData", findUser, {
     cacheTime: 1000,
     staleTime: 1000,
     onError: (error) => console.log("errorrrr", error),
-    onSuccess: (data) => console.log("Yeppiiiiiiiiii", user),
+    onSuccess: (data) => <h1>Success</h1>,
     refetchOnWindowFocus: true,
   });
 
-  if (error) return <h1>{error}</h1>;
-  if (status == "pending") return <h2>Waittttttttttttt</h2>;
-  // Pass the user state to useShowProfile
-  return user ? useShowProfile(user) : <h1>Data is Loading</h1>;
+  let CheckValidData = user || refetch();
+
+  // console.log(CheckValidData);
+  return useShowProfile(CheckValidData);
 }
 
 export default Profile;

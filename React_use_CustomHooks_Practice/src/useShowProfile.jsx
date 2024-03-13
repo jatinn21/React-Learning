@@ -60,7 +60,6 @@ const useShowProfile = ({
   twitter,
   github,
   instagram,
-  profileImage,
 }) => {
   return (
     <div
