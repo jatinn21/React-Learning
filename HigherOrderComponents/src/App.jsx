@@ -6,16 +6,24 @@ function App() {
       <h3>Higher Component- App Component</h3>
       <div className="boxes">
         <Counter CardColor="red" CardTitle="counter" />
-        <Counter CardColor="orange" CardTitle="roles" />
+        <Counter
+          CardColor="orange"
+          CardTitle="roles"
+          important={{ name: "Vikash", age: 32 }}
+        />
         <Counter CardColor="green" CardTitle="orders" />
         <Counter CardColor="pink" CardTitle="guests" />
-        <Counter CardColor="purple" CardTitle="employees" />
+        <Counter
+          CardColor="purple"
+          CardTitle="employees"
+          important={{ name: "Jatin", age: 25 }}
+        />
       </div>
     </div>
   );
 }
 
-function Counter({ CardColor, CardTitle }) {
+function Counter({ CardColor, CardTitle, important }) {
   const [count, setCount] = useState(0);
 
   const updateCounter = () => {
@@ -39,6 +47,8 @@ function Counter({ CardColor, CardTitle }) {
         <h1>{count}</h1>
       </p>
       <button onClick={updateCounter}>Increae Count</button>
+      <p>{important && important?.name}</p>
+      <p>{important && important?.age}</p>
     </div>
   );
 }
